@@ -53,3 +53,6 @@ gem "devise", "~> 4.7"
 
 gem "rails_admin", "~> 2.0"
 gem 'devise_token_auth'
+gem 'carrierwave', '~> 2.0'
+gem 'friendly_id', '~> 5.2.4'
+gem 'rqrcode'
