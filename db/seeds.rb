@@ -26,7 +26,7 @@ def create_items
       name = Faker::Name.last_name
       total = 50
       remaining_quantity = 50
-      Item.create(category: category, name: name, decription: '', quantity: total, remaining_quantity: remaining_quantity)
+      Item.create(category: category, name: name, description: '', quantity: total, remaining_quantity: remaining_quantity)
     end
   end
 end

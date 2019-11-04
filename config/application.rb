@@ -31,5 +31,15 @@ module RailsAuthFlow
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          :headers => :any,
+          :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client', 'latest-version'],
+          :methods => [:get, :post, :options, :delete, :put, :patch]
+      end
+    end
   end
 end
