@@ -57,3 +57,9 @@ gem 'carrierwave', '~> 2.0'
 gem 'friendly_id', '~> 5.2.4'
 gem 'rqrcode'
 gem 'rack-cors'
+
+gem "materialize-sass"
+gem "material_icons"
+gem "devise_materialize", "~>1.2.0"
+gem 'jquery-datatables'
+gem 'high_voltage'

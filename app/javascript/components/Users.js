@@ -1,16 +1,22 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
+import MaterialTable from 'material-table';
+import _ from 'lodash';
 class Users extends React.Component {
   render () {
+    let columnList = Object.keys(this.props.users[0]);
+    let columns = _.map(columnList, (name, index) => {
+      return {field: name, title: name};
+    });
     return (
       <div>
-        <h1>All Users</h1>
-        <ul>
-          {this.props.users.map(user => (
-            <li key={user.id}>{`${user.f_name} ${user.l_name}`}</li>
-          ))}
-        </ul>
+        <MaterialTable
+        title="All Users"
+        columns={columns}
+        data={this.props.users}
+        />
       </div>
+      
     );
   }
 }
@@ -18,4 +24,5 @@ class Users extends React.Component {
 Users.propTypes = {
   users: PropTypes.array
 };
+
 export default Users

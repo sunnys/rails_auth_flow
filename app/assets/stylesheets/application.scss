@@ -12,4 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require material_icons
  */
+//  @import "materialize/components/color";
+//  $primary-color: color("red", "darken-1") !default;
+//  $secondary-color: color("red", "base") !default;
+ @import 'materialize';
+//  @import "materialize/extras/nouislider";
+//  @import 'default';
+//  @import "datatables";
