@@ -19,17 +19,17 @@ def create_users
   end
 end
 
-def create_items
-  5.times do
-    category = Faker::Name.first_name
-    2.times do
-      name = Faker::Name.last_name
-      total = 50
-      remaining_quantity = 50
-      Item.create(category: category, name: name, description: '', quantity: total, remaining_quantity: remaining_quantity)
-    end
-  end
-end
+# def create_items
+#   5.times do
+#     category = Faker::Name.first_name
+#     2.times do
+#       name = Faker::Name.last_name
+#       total = 50
+#       remaining_quantity = 50
+#       Item.create(category: category, name: name, description: '', quantity: total, remaining_quantity: remaining_quantity)
+#     end
+#   end
+# end
 
 # create_items
 def create_items_new
@@ -53,7 +53,7 @@ def create_items_new
     })
   end
 end
-# create_items_new
+
 
 def create_booked_order
   categories = ['19SEP/C-30/D5', '19SEP/C-30/D4', '19SEP/C-30/D3', '19SEP/C-30/D2','19SEP/C-30/D1']
@@ -82,4 +82,7 @@ def create_booked_order
     })
   end
 end
+
+create_users
+create_items_new
 create_booked_order

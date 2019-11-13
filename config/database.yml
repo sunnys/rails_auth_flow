@@ -78,11 +78,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
-  <<: *default
-  database: rails_auth_flow_production
-  username: rails_auth_flow
-  password: <%= ENV['RAILS_AUTH_FLOW_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+#
+# production:
+#   <<: *default
+#   database: rails_auth_flow_production
+#   username: rails_auth_flow
+#   password: <%#= ENV['RAILS_AUTH_FLOW_DATABASE_PASSWORD'] %>
