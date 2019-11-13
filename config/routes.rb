@@ -14,7 +14,12 @@ Rails.application.routes.draw do
       get '/home' => 'home#index'
       resources :items
       resources :orders
-      resources :members
+      resources :members do
+        member do
+          get '/validate' => 'members#validate'
+        end
+      end
+      resources :booked_orders
     end
   end
 end

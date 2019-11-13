@@ -2,9 +2,13 @@ class Api::V1::OrdersController < Api::V1::ApiController
   before_action :set_order, only: [:show, :update, :destroy]
 
   def create
+    if !params[:so_number].nil?
+      @member = Member.find_or_create_by(name: params[:so_number])
+    end
     @order = Order.new(order_params)
+    @order.member_id = @member.id
     if @order.save
-      render json: @order, status: :created
+      render json: @order.as_json(:include => {:item => {:only => :name}}), status: :created
     else
       render json: @order.errors, status: :unprocessable_entity
     end

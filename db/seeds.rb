@@ -30,4 +30,56 @@ def create_items
     end
   end
 end
-create_items
+
+# create_items
+def create_items_new
+  item_code_base = 20750122
+  10.times do |i|
+    categories = ['19SEP/C-30/D5', '19SEP/C-30/D4', '19SEP/C-30/D3', '19SEP/C-30/D2','19SEP/C-30/D1']
+    lot_no = categories.sample
+    qty = 750
+    Item.create({
+      'category': lot_no,
+      'item_code': (item_code_base + i).to_s,
+      'name': 'Sodium Nitrate',
+      'description': 'Sodium Nitrite Std - 50 Kg Bag',
+      'lot_no': lot_no,
+      'primary_qty': '35.45',
+      'primary_uom': 'MT',
+      'secondary_qty': qty,
+      'secondary_uom': 'BAG',
+      'quantity': qty,
+      'remaining_quantity': qty
+    })
+  end
+end
+# create_items_new
+
+def create_booked_order
+  categories = ['19SEP/C-30/D5', '19SEP/C-30/D4', '19SEP/C-30/D3', '19SEP/C-30/D2','19SEP/C-30/D1']
+  so_no_base =  2000551
+  item_code_base = 20750122
+  categories.each_with_index.each do |lot, index|
+    item_desc = 'Sodium Nitrite Std - 50 Kg Bag'
+    lot_no = lot
+    item_code = item_code_base + index
+    so_no = so_no_base + index
+    primary_qty = 35.45
+    primary_uom = 'MT'
+    secondary_qty = (primary_qty * 1000)/50
+    secondary_uom = 'BAG'
+    load_bags = secondary_qty
+    BookedOrder.create({
+      item_code: item_code,
+      item_desc: item_desc,
+      lot_no: lot_no,
+      so_number: so_no,
+      load_bags: load_bags,
+      primary_qty: primary_qty,
+      primary_uom: primary_uom,
+      secondary_qty: secondary_qty,
+      secondary_uom: secondary_uom
+    })
+  end
+end
+create_booked_order

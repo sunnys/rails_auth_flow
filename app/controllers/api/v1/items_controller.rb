@@ -28,6 +28,6 @@ class Api::V1::ItemsController < Api::V1::ApiController
 
   private
   def set_item
-    @item = Item.friendly.find(params[:id])
+    @item = Item.friendly.find(params[:id].to_s.strip)
   end
 end

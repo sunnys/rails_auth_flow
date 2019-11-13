@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_083659) do
+ActiveRecord::Schema.define(version: 2019_11_13_041109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "booked_orders", force: :cascade do |t|
+    t.string "item_code"
+    t.string "item_desc"
+    t.string "lot_no"
+    t.string "primary_qty"
+    t.string "primary_uom"
+    t.integer "secondary_qty"
+    t.string "secondary_uom"
+    t.string "so_number"
+    t.integer "load_bags"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -36,6 +50,12 @@ ActiveRecord::Schema.define(version: 2019_10_31_083659) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.string "qrcode"
+    t.string "item_code"
+    t.integer "primary_qty"
+    t.string "primary_uom"
+    t.integer "secondary_qty"
+    t.string "secondary_uom"
+    t.string "lot_no"
     t.index ["slug"], name: "index_items_on_slug", unique: true
   end
 
@@ -45,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_083659) do
     t.string "phone"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "lot_no"
   end
 
   create_table "orders", force: :cascade do |t|

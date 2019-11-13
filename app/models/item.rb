@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :item_code, use: :slugged
 
   mount_uploader :qrcode, QrCodeUploader
 
@@ -16,7 +16,7 @@ class Item < ApplicationRecord
   def generate_qr_code
     require 'rqrcode'
 
-    qrcode = RQRCode::QRCode.new(self.slug)
+    qrcode = RQRCode::QRCode.new("#{self.slug} | #{self.lot_no}")
 
     # NOTE: showing with default options specified explicitly
     png = qrcode.as_png(

@@ -1,5 +1,5 @@
 class Api::V1::MembersController < Api::V1::ApiController
-  before_action :set_member, only: [:show, :update, :destroy]
+  before_action :set_member, only: [:show, :update, :destroy, :validate]
 
   def create
     @member = Member.new(member_params)
@@ -30,6 +30,17 @@ class Api::V1::MembersController < Api::V1::ApiController
 
   def show
     render json: @member.as_json(:include => {:orders => { :include => {:item => {:only => :name}}, :only => [:quantity, :status]}})
+  end
+
+  def validate
+    @booked_order = BookedOrder.find_by(so_number: @member.name)
+    member_item = @member.orders.last.item
+    order = @member.orders.last
+    if member_item.item_code == @booked_order.item_code and member_item.lot_no == @booked_order.lot_no and order.quantity == @booked_order.load_bags
+      render json: {message: "Valid order"}
+    else
+      render json: {message: "In-valid order"}
+    end 
   end
 
   private
