@@ -63,3 +63,5 @@ gem "material_icons"
 gem "devise_materialize", "~>1.2.0"
 gem 'jquery-datatables'
 gem 'high_voltage'
+gem 'prawn', '~>2.2.0'
+gem 'openssl', '~> 2.1.2'
